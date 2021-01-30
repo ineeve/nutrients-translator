@@ -3,7 +3,9 @@
 nutriMapSpanishToEnglish = {
     'ac. grasos trans': 'Trans Fatty Acids',
     'ac. pantoténico':'Vitamin B5',
+    'ac.pantoténico':'Vitamin B5',
     'acesulfame de potassio':'Acesulfame Potassium',
+    'acesulfame de potasio':'Acesulfame Potassium',
     'acesulfamo de potasio':'Acesulfame Potassium',
     'acesulfano de potasio':'Acesulfame Potassium',
     'ácido fólico':'Vitamin B9',
@@ -73,3 +75,11 @@ def translate(term, sourceLang, outLang):
     else:
         return "Unsupported Languages"
         
+def getSQLUpdates():
+    queries = []
+    for key in nutriMapSpanishToEnglish:
+        query = 'UPDATE moogliDB.Nutrients SET name="' + nutriMapSpanishToEnglish[key] + '" WHERE name="' + key + '";'
+        queries.append(query)
+    with open('updateNutrients.sql', 'w') as filehandle:
+        for query in queries:
+            filehandle.write('%s\n' % query)
