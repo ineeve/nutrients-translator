@@ -1,3 +1,5 @@
+# This Python file uses the following encoding: utf-8
+
 nutriMapSpanishToEnglish = {
     'ac. grasos trans': 'Trans Fatty Acids',
     'ac. pantoténico':'Vitamin B5',
